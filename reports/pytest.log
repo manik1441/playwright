@@ -1,0 +1,4 @@
+INFO     UI_BasePage:base_page.py:9 Navigating to https://www.saucedemo.com/
+INFO     UI_BasePage:base_page.py:17 Filling id=user-name with text
+INFO     UI_BasePage:base_page.py:17 Filling id=password with text
+INFO     UI_BasePage:base_page.py:13 Clicking on id=login-button
