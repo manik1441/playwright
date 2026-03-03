@@ -1,0 +1,16 @@
+image: mcr.microsoft.com/playwright/python:v1.42.0-jammy
+
+stages:
+  - test
+
+run_e2e_tests:
+  stage: test
+  script:
+    - pip install -r requirements.txt
+    # Run tests in parallel and generate report
+    - pytest tests/ -n auto --html=reports/report.html
+  artifacts:
+    when: always
+    paths:
+      - reports/report.html
+    expire_in: 1 week

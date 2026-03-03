@@ -1,0 +1,18 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install dependencies needed for Playwright
+RUN apt-get update && apt-get install -y \
+    libpq-dev gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+# Install Playwright browsers
+RUN playwright install --with-deps chromium
+
+COPY . .
+
+# Default command to run tests
+CMD ["pytest", "tests/e2e/", "--html=reports/report.html"]
